@@ -3,8 +3,8 @@ import csv
 from datetime import datetime
 import time
 
-def UTC_timestamp():
-    UTC_timestamp = datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S.%s')[0:-7]
+def UTC_timestamp(t):
+    UTC_timestamp = datetime.fromtimestamp(t).strftime('%Y-%m-%d %H:%M:%S.%s')[0:-7]
     return UTC_timestamp
 
 def parseFile():
@@ -32,6 +32,8 @@ def parseFile():
 
     csvfile.close()
 
+    print(UTC_timestamp(timestamps[-1]), [pressures[-1], temperatures[-1]])
+
     plt.clf()
 
     plt.title(str(UTC_timestamp()))
@@ -39,14 +41,14 @@ def parseFile():
     plt.ylabel('Temperature')
     plt.subplot(211)
     plt.plot(timestamps, temperatures, 'k-')
-    plt.plot(timestamps, temperatures, 'r.')
+    plt.plot(timestamps, temperatures, 'b.')
 
     plt.title(str(UTC_timestamp()))
     plt.xlabel('Timestamps')
     plt.ylabel('Barometer')
     plt.subplot(212)
     plt.plot(timestamps, pressures, 'k-')
-    plt.plot(timestamps, pressures, 'b.')
+    plt.plot(timestamps, pressures, 'r.')
 
     plt.draw()
     plt.pause(0.1)

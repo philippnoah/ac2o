@@ -2,8 +2,8 @@ import socket
 import datetime, time
 import sys
 
-MCAST_GRP = "224.168.2.9"
-MCAST_PORT = 4446
+MCAST_GRP = "10.90.35.148"
+MCAST_PORT = 5002
 # regarding socket.IP_MULTICAST_TTL
 # ---------------------------------
 # for all packets sent, after two hops on the network the packet will not
